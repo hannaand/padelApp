@@ -1,0 +1,33 @@
+<ion-view title="Admin" id="page5" class=" ">
+    <br>
+    <br>    
+        <form ng-submit="addTeam()" id="admin-form5" class="list ">
+            <label class="item item-input " id="admin-input7">
+                <input ng-model="admin.team.div" type="number" placeholder="Division">
+            </label>
+            <label class="item item-input " id="admin-input7">
+                <input ng-model="admin.team.number" type="number" placeholder="Omgång">
+            </label>
+            <label class="item item-input " id="admin-input7">
+                <input ng-model="admin.team.year" type="number" placeholder="År">
+            </label>
+            <label class="item item-input">
+  				<span class="input-label">Matchdag</span>
+  				<input ng-model="admin.team.date" type="date" placeholder="Matchdag">
+			</label>
+            <label class="item item-input " id="admin-input7">
+            <span class="input-label">Tid</span>
+                <input ng-model="admin.team.time" type="time">
+            </label>
+            <label class="item item-input " id="admin-input7">
+                <input ng-model="admin.team.court" type="number" placeholder="Bana">
+            </label>
+            <label class="item item-input " id="admin-input8">
+                <input ng-model="admin.team.home" type="text" placeholder="Hemmalag">
+            </label>
+            <label class="item item-input " id="admin-input8">
+                <input ng-model="admin.team.away" type="text" placeholder="Bortalag">
+            </label>
+        	<button id="admin-button15" class=" button button-energized  button-block " type="submit">Registrera spelschema</button>
+        </form>
+</ion-view>
