@@ -27,14 +27,16 @@ angular.module('app.controllers', [])
 .controller('loginCtrl', function($scope) {
 
 })
-   
-.controller('signupCtrl', ['$scope', '$firbaseObject', '$firebaseArray', 'Auth', '$state',
+
+.controller('signupCtrl', ['$scope', '$firebaseObject', '$firebaseArray', 'Auth', '$state',
   function($scope, $firebaseObject, $firebaseArray, Auth) {
 
     $scope.signUp = function (){
       Auth.$createUserWithEmailAndPassword($scope.user.email, $scope.user.password)
       .then(function(firebaseUser){
         console.log("User created with uid:", firebaseUser.uid);
+
+
         $state.go('login');
       }).catch(function(error){
         console.log("oh no you have a error:", error);
