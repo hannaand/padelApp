@@ -27,14 +27,16 @@ angular.module('app.controllers', [])
 .controller('loginCtrl', function($scope) {
 
 })
-   
-.controller('signupCtrl', ['$scope', '$firbaseObject', '$firebaseArray', 'Auth',
+                                        //glöm ej e                                // state behöver vi för att kunna redirecta
+.controller('signupCtrl', ['$scope', '$firebaseObject', '$firebaseArray', 'Auth', '$state',
   function($scope, $firebaseObject, $firebaseArray, Auth) {
 
     $scope.signUp = function (){
       Auth.$createUserWithEmailAndPassword($scope.user.email, $scope.user.password)
       .then(function(firebaseUser){
         console.log("User created with uid:", firebaseUser.uid);
+        //här gör vi så att den skickar en till login sidan när man har registrerat ett konto
+        $state.go('login');
       }).catch(function(error){
         console.log("oh no you have a error:", error);
       });
