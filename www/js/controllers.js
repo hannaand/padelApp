@@ -1,12 +1,13 @@
 angular.module('app.controllers', [])
   
-.controller('resultatCtrl', function($scope) {
+.controller('resultatCtrl', ['$scope', '$firebaseObject', '$firebaseArray', 'Auth', '$state',
+  function($scope, $firebaseObject, $firebaseArray, Auth, $state) {
 
-})
+}])
    
 .controller('adminCtrl', ['$scope', '$firebaseObject', '$firebaseArray', 'Auth', '$state',
   function($scope, $firebaseObject, $firebaseArray, Auth, $state) {
-    var ref = firebase.database.ref();
+    var ref = firebase.database().ref();
     var team = $firebaseArray(ref);
     
     $scope.addTeam = function() {
@@ -85,7 +86,7 @@ angular.module('app.controllers', [])
    
 .controller('spelschemaCtrl', ['$scope', '$firebaseObject', '$firebaseArray', 'Auth', '$state',
   function($scope, $firebaseObject, $firebaseArray, Auth, $state) {
-    var ref = firebase.database.ref();
+    var ref = firebase.database().ref();
     var team = $firebaseArray(ref);
 
     $scope.teams = $firebaseArray(teams);
