@@ -4,21 +4,27 @@ angular.module('app.controllers', [])
 
 })
    
-.controller('adminCtrl', function($scope, $firebaseArray) {
-    var ref = firebase.database().ref().child("teams");
-  // create a synchronized array
-  $scope.teams = $firebaseArray(ref);
-  // add new items to the array
-  // the message is automatically added to our Firebase database!
-  $scope.addTeam = function() {
-    $scope.teams.$add({
-      div: $scope.newTeamDiv,
-      number: $scope.newTeamNumber
+.controller('adminCtrl', ['$scope', '$firebase', '$firebaseArray', '$location',
+  function($scope, $firebase, $firebaseArray) {
 
-    });
+    $scope.addTeam = function() {
+    var ref = new Firebase("https://mypadelapp.firebaseio.com/");
+    var team = $firebaseArray(ref);
+    // create
+    team.$add({
+      div: $scope.admin.team.div, 
+      number: $scope.admin.team.number, 
+      year: $scope.admin.team.year, 
+      date: $scope.admin.team.date,
+      time: $scope.admin.team.time, 
+      court: $scope.admin.team.court, 
+      home: $scope.admin.team.home, 
+      away: $scope.admin.team.away,
+  });
+    $location.path('/')
   };
-  
-})
+
+}])
    
 .controller('lagCtrl', function($scope) {
 
@@ -33,11 +39,12 @@ angular.module('app.controllers', [])
       if (firebaseUser) {
       $scope.firebaseUser = firebaseUser;
       console.log("logged in as :", firebaseUser.uid);
+    $state.go('tabsController.resultat');
     } else {
       $scope.firebaseUser = null;
       console.log("You are not logged in");
     }
-    
+
     });
 
     $scope.logOut = function(){
@@ -75,7 +82,12 @@ angular.module('app.controllers', [])
 
 }])
    
-.controller('spelschemaCtrl', function($scope) {
+.controller('spelschemaCtrl', ['$scope', '$firebase', '$firebaseArray',
+  function($scope, $firebase, $firebaseArray) {
+    var teams = new Firebase("https://mypadelapp.firebaseio.com/");
+    $scope.teams = firebaseArray(teams);
 
-})
+}]);
+
+
  

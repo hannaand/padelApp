@@ -1,7 +1,7 @@
 <ion-view title="Admin" id="page5" class=" ">
     <br>
     <br>    
-        <form ng-submit="addTeam()" id="admin-form5" class="list ">
+        <form ng-submit="add()" id="admin-form5" class="list ">
             <label class="item item-input " id="admin-input7">
                 <input ng-model="admin.team.div" type="number" placeholder="Division">
             </label>
@@ -28,6 +28,6 @@
             <label class="item item-input " id="admin-input8">
                 <input ng-model="admin.team.away" type="text" placeholder="Bortalag">
             </label>
-        	<button id="admin-button15" class=" button button-energized  button-block " type="submit">Registrera spelschema</button>
+        	<button id="admin-button15" class=" button button-energized  button-block " type="submit" ng-click="addTeam()">Registrera spelschema</button>
         </form>
 </ion-view>

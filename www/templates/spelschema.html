@@ -1,8 +1,34 @@
 <ion-view title="Spelschema" id="page11" class=" ">
-    <ion-content padding="true" class="has-header">
+   <br>
+   <br>
+   <br>
         <ion-list id="spelschema-list10" class=" ">
             <ion-item class="item-divider " id="spelschema-list-item-divider4">Division 1</ion-item>
         </ion-list>
+        <table class="table" >
+        <thead>
+            <tr>
+                <th>Div</th>
+                <th>Dag</th>
+                <th>Tid</th>
+                <th>Bana</th>
+                <th>Hemma</th>
+                <th>Borta</th>
+                <th>Resultat</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="team in teams">
+                <td>{{admin.team.div}}</td>
+                <td>{{admin.team.date}}</td>
+                <td>{{admin.team.time}}</td>
+                <td>{{admin.team.court}}</td>
+                <td>{{admin.team.home}}</td>
+                <td>{{admin.team.away}}</td>
+                <td>{{team.result}}</td>
+            </tr>
+        </tbody>
+    </table>
         <div id="spelschema-button-bar4" class=" button-bar ">
             <button id="spelschema-button24" class=" button button-energized button-small button-block ">D</button>
             <button id="spelschema-button25" class=" button button-energized button-small button-block ">T</button>
@@ -14,6 +40,4 @@
         <ion-list id="spelschema-list11" class=" ">
             <ion-item class="item-divider " id="spelschema-list-item-divider5">Division 2</ion-item>
         </ion-list>
-        
-    </ion-content>
 </ion-view>
