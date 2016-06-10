@@ -8,22 +8,26 @@ angular.module('app.controllers', [])
 .controller('adminCtrl', ['$scope', '$firebaseObject', '$firebaseArray', 'Auth', '$state',
   function($scope, $firebaseObject, $firebaseArray, Auth, $state) {
     var ref = firebase.database().ref();
-    var team = $firebaseArray(ref);
+    var game = ref.child('game');
+    var team = $firebaseArray(game);
+    var url = ref.toString(); 
     
     $scope.addTeam = function() {
     
     // create
     team.$add({
-      div: $scope.admin.team.div, 
-      number: $scope.admin.team.number, 
-      year: $scope.admin.team.year, 
-      date: $scope.admin.team.date,
-      time: $scope.admin.team.time, 
-      court: $scope.admin.team.court, 
-      home: $scope.admin.team.home, 
-      away: $scope.admin.team.away,
-  });
-    $location.path('/')
+      'number': $scope.admin.team.number,  
+      'year': $scope.admin.team.year, 
+      'date': $scope.admin.team.date.toString('dddd, dd MMMM yyyy'), 
+      'time': $scope.admin.team.time.toString('HH:mm'),  
+      'court': $scope.admin.team.court, 
+      'home': $scope.admin.team.home,
+      'away': $scope.admin.team.away, 
+    
+    }).then(function(data){  
+    console.log(data);
+  }); 
+    //$location.path('/')
   };
 
 }])
@@ -87,9 +91,10 @@ angular.module('app.controllers', [])
 .controller('spelschemaCtrl', ['$scope', '$firebaseObject', '$firebaseArray', 'Auth', '$state',
   function($scope, $firebaseObject, $firebaseArray, Auth, $state) {
     var ref = firebase.database().ref();
-    var team = $firebaseArray(ref);
+    var game = ref.child('game');
+    var team = $firebaseArray(game);
 
-    $scope.teams = $firebaseArray(teams);
+    $scope.teams = team;
 
 }]);
 

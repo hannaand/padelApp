@@ -8,7 +8,6 @@
         <table class="table" >
         <thead>
             <tr>
-                <th>Div</th>
                 <th>Dag</th>
                 <th>Tid</th>
                 <th>Bana</th>
@@ -19,12 +18,11 @@
         </thead>
         <tbody>
             <tr ng-repeat="team in teams">
-                <td>{{admin.team.div}}</td>
-                <td>{{admin.team.date}}</td>
-                <td>{{admin.team.time}}</td>
-                <td>{{admin.team.court}}</td>
-                <td>{{admin.team.home}}</td>
-                <td>{{admin.team.away}}</td>
+                <td>{{team.date | date:"medium"}}</td>
+                <td>{{team.time}}</td>
+                <td>{{team.court}}</td>
+                <td>{{team.home}}</td>
+                <td>{{team.away}}</td>
                 <td>{{team.result}}</td>
             </tr>
         </tbody>
