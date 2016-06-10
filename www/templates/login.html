@@ -1,6 +1,8 @@
 <ion-view title="Login" id="page8" class=" ">
-​   <br>
-    <br>
+​<br />
+<br />
+<br />
+    <div ng-hide="firebaseUser">
         <form id="login-form2" class="list " ng-submit="login()">
             <ion-list id="login-list3" class=" ">
                 <label class="item item-input " id="login-input1">
@@ -14,5 +16,11 @@
             <button id="login-button6" class=" button button-stable  button-block " type="submit">Logga in</button>
             <a ui-sref="signup" id="login-button7" class=" button button-positive  button-block button-clear ">Eller skapa nytt konto</a>
         </form>
-​
+​    </div>
+    <div ng-show="firebaseUser">
+        <p>
+            Du är inloggad som : {{firebaseUser.uid}}
+        </p>
+        <button class=" button button-stable  button-block " type="submit" ng-click="logOut()">Logga ut</button>      
+    </div>
 </ion-view>

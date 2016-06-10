@@ -27,6 +27,32 @@ angular.module('app.controllers', [])
 .controller('loginCtrl', ['$scope', '$firebaseObject', '$firebaseArray', 'Auth', '$state',
   function($scope, $firebaseObject, $firebaseArray, Auth, $state) {
 
+    $scope.auth = Auth;
+
+    $scope.auth.$onAuthStateChanged(function(firebaseUser) {
+      if (firebaseUser) {
+      $scope.firebaseUser = firebaseUser;
+      console.log("logged in as :", firebaseUser.uid);
+    } else {
+      $scope.firebaseUser = null;
+      console.log("You are not logged in");
+    }
+    
+    });
+
+    $scope.logOut = function(){
+      $scope.auth.$signOut();
+    };
+
+
+    $scope.login = function(){
+      $scope.auth.$signInWithEmailAndPassword($scope.user.email, $scope.user.password)
+      .then(function(authData){
+      console.log("logged user in with uid:", authData.uid);
+    }).catch(function(error){
+      console.log("oh no someting happend:", error);
+    });
+  };
 
 }])
 
