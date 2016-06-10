@@ -4,12 +4,13 @@ angular.module('app.controllers', [])
 
 })
    
-.controller('adminCtrl', ['$scope', '$firebase', '$firebaseArray', '$location',
-  function($scope, $firebase, $firebaseArray) {
-
-    $scope.addTeam = function() {
-    var ref = new Firebase("https://mypadelapp.firebaseio.com/");
+.controller('adminCtrl', ['$scope', '$firebaseObject', '$firebaseArray', 'Auth', '$state',
+  function($scope, $firebaseObject, $firebaseArray, Auth, $state) {
+    var ref = firebase.database.ref();
     var team = $firebaseArray(ref);
+    
+    $scope.addTeam = function() {
+    
     // create
     team.$add({
       div: $scope.admin.team.div, 
@@ -82,10 +83,12 @@ angular.module('app.controllers', [])
 
 }])
    
-.controller('spelschemaCtrl', ['$scope', '$firebase', '$firebaseArray',
-  function($scope, $firebase, $firebaseArray) {
-    var teams = new Firebase("https://mypadelapp.firebaseio.com/");
-    $scope.teams = firebaseArray(teams);
+.controller('spelschemaCtrl', ['$scope', '$firebaseObject', '$firebaseArray', 'Auth', '$state',
+  function($scope, $firebaseObject, $firebaseArray, Auth, $state) {
+    var ref = firebase.database.ref();
+    var team = $firebaseArray(ref);
+
+    $scope.teams = $firebaseArray(teams);
 
 }]);
 
